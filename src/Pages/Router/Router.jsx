@@ -6,7 +6,7 @@ import HomePage from '../HomePage/HomePage'
 const Router = () => {
   return (
     <div>
-      <div>
+      <div className='flex'>
         <div className='flex'>
           <div>
             <Sidebar/>
