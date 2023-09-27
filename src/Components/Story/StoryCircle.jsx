@@ -9,3 +9,5 @@ export const StoryCircle = () => {
     </div>
   )
 }
+
+export default StoryCircle

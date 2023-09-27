@@ -5,6 +5,7 @@ import "./PostCard.css"
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComment } from 'react-icons/fa';
 import { RiSendPlaneLine } from 'react-icons/ri';
+import CommentModel from '../Comment/CommentModel';
 
 const PostCard = () => {
 
@@ -74,6 +75,7 @@ const PostCard = () => {
                 </div>
             </div>
         </div>
+        < CommentModel> </CommentModel>
     </div>
   )
 }
