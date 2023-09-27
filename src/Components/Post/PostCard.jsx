@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import {BsBookmark, BsBookmarkFill, BsThreeDots} from 'react-icons/bs'
+import {BsBookmark, BsBookmarkFill, BsEmojiSmile, BsThreeDots} from 'react-icons/bs'
 import "./PostCard.css"
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComment } from 'react-icons/fa';
@@ -60,6 +60,17 @@ const PostCard = () => {
                     <BsBookmark onClick={handelSavedPost} className='text-xl hover:opacity-50 cursor-pointer'></BsBookmark>}
                     
                     
+                </div>
+            </div>
+
+            <div className='w-full py-2 px-5'>
+                <p>10 likes</p>
+                <p className='opacity-50 py-2 cursor-pointer'>view all 10 comments</p>
+            </div>
+            <div className='border border-t w-full'>
+                <div className='flex w-full item-center px-5'>
+                    <BsEmojiSmile></BsEmojiSmile>
+                    <input className='CommentInput' type="text" placeholder='Add a Comment...'/>
                 </div>
             </div>
         </div>
