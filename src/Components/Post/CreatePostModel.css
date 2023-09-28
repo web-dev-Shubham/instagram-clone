@@ -1,0 +1,15 @@
+.drag-drop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.drag-drop p{
+    margin: 0 0 1rem;
+}
