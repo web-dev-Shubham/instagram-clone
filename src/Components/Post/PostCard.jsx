@@ -6,12 +6,14 @@ import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComment } from 'react-icons/fa';
 import { RiSendPlaneLine } from 'react-icons/ri';
 import CommentModel from '../Comment/CommentModel';
+import { useDisclosure } from '@chakra-ui/react';
 
 const PostCard = () => {
 
     const [showDropDown,setShowDropDown]=useState(false);
     const [isPostLiked,setIsPostLiked] =useState(false);
     const [isSaved,setIsSaved]=useState(false);
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const handelSavedPost=()=> {
         setIsSaved(!isSaved);
@@ -23,6 +25,9 @@ const PostCard = () => {
 
     const handelClick=()=> {
         setShowDropDown(!showDropDown);
+    }
+    const handelOpenCommentModel=()=> {
+        onOpen()
     }
   return (
     <div>
@@ -51,7 +56,7 @@ const PostCard = () => {
             <div className='flex justify-between item-center w-full px-5 py-4'>
                 <div className='flex item-center space-x-2'>
                     {isPostLiked? <AiFillHeart className='text-2xl hover:opacity-50 cursor-pointer text-red-700' onClick={handelPostLike}></AiFillHeart>:<AiOutlineHeart className='text-xl hover:opacity-50 cursor-pointer' onClick={handelPostLike}></AiOutlineHeart>}
-                    <FaRegComment className='text-xl hover:opacity-50 cursor-pointer'></FaRegComment>
+                    <FaRegComment onClick={handelOpenCommentModel} className='text-xl hover:opacity-50 cursor-pointer'></FaRegComment>
                     <RiSendPlaneLine className='text-xl hover:opacity-50 cursor-pointer'> </RiSendPlaneLine>
                     
                 </div>
@@ -75,7 +80,8 @@ const PostCard = () => {
                 </div>
             </div>
         </div>
-        < CommentModel> </CommentModel>
+        < CommentModel handelPostLike={handelPostLike} onClose={onClose} isOpen={isOpen} handelSavedPost={handelSavedPost} isPostLiked={isPostLiked} isSaved={isSaved}>
+             </CommentModel>
     </div>
   )
 }
