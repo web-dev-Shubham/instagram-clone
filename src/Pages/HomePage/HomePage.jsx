@@ -2,7 +2,8 @@ import React from 'react'
 import { StoryCircle } from '../../Components/Story/StoryCircle'
 import { HomeRight } from '../../Components/HomeRight/HomeRight'
 import PostCard from '../../Components/Post/PostCard'
-import CreatePostModel from '../../Components/Post/CreatePostModel'
+
+
 
 const HomePage = () => {
   return (
@@ -20,7 +21,7 @@ const HomePage = () => {
           <HomeRight></HomeRight>
         </div>
       </div>
-      <CreatePostModel></CreatePostModel>
+      
     </div>
   )
 }

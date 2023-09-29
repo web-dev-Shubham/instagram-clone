@@ -2,10 +2,14 @@ import React, { useState } from 'react'
 import {IoReorderThreeOutline} from "react-icons/io5"
 import { menu } from './SidebarConfig'
 import { useNavigate } from 'react-router-dom';
+import CreatePostModel from '../Post/CreatePostModel';
+import { useDisclosure } from '@chakra-ui/react';
 
 const Sidebar = () => {
     const [activeTab,setActiveTab]=useState();
     const navigate=useNavigate();
+
+    const [isOpen, onOpen,onClose]= useDisclosure();
 
     const handelTabClick=(title)=> {
         setActiveTab(title)
@@ -14,6 +18,9 @@ const Sidebar = () => {
         }
         else if(title==="Home"){
             navigate("/")
+        }
+        else if(title==="Create") {
+            onOpen()
         }
     }
 
@@ -41,8 +48,9 @@ const Sidebar = () => {
         <p className='ml-5'>More</p>
         </div>
         </div>
+        <CreatePostModel onClose={onClose} isOpen={isOpen}></CreatePostModel> 
     </div>
   )
 }
 
-export default Sidebar
+export default Sidebar;

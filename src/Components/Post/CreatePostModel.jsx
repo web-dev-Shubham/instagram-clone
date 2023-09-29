@@ -3,6 +3,8 @@ import React from 'react'
 import { useState } from 'react';
 import { FaPhotoVideo } from 'react-icons/fa'
 import "./CreatePostModel.css"
+import { GrEmoji } from 'react-icons/gr'
+import { GoLocation } from 'react-icons/go'
 
 const CreatePostModel = ({
     onClose,isOpen
@@ -10,6 +12,7 @@ const CreatePostModel = ({
 
     const [isDragOver,setIsDragOver]=useState(false);
     const [file,setFile]=useState();
+    const [caption,setCaption]=useState("");
 
 
     const handelDrop=(event)=>{
@@ -42,11 +45,14 @@ const CreatePostModel = ({
             alert("Please select an image or video")
         }
     }
+    const handelCaptionChange=(e)=> {
+        setCaption(e.target.value)
+    }
     
 
   return (
     <div>
-        <Modal  size={"4xl"} onClose={onClose} isOpen={true} isCentered>
+        <Modal  size={"4xl"} onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
         <ModalContent>
           <div className='flex justify-between py-1 px-10 item-center'>
@@ -82,7 +88,26 @@ const CreatePostModel = ({
                         <img className='w-7 h-7 rounded-full' src="https://cdn.pixabay.com/photo/2023/06/29/12/28/cats-8096304_1280.jpg" alt="" />
                         <p className='font-semibold ml-4'>username</p>
                     </div>
-                    
+                    <div className='px-2'>
+                        <textarea 
+                        placeholder='Write a Caption' 
+                        className='captionInput' 
+                        name="caption" 
+                        rows="8"
+                        onChange={handelCaptionChange}>
+                        </textarea>
+                    </div>
+                    <div className='flex justify-between px-2'>
+                        <GrEmoji/>
+                        <p className='opacity-70'>{caption?.length} /2,200</p>
+                    </div>
+                    <hr />
+
+                    <div className='flex p-2 justify-between item-center'>
+                        <input className='locationInput' type="text" placeholder='location' name='location' />
+                        <GoLocation/>
+                    </div>
+                    <hr />
                 </div>
             </div>
           </ModalBody>
