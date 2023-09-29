@@ -1,7 +1,8 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent,ModalHeader, ModalOverlay } from '@chakra-ui/react'
+import { Button, Modal, ModalBody, ModalContent,ModalOverlay } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react';
 import { FaPhotoVideo } from 'react-icons/fa'
+import "./CreatePostModel.css"
 
 const CreatePostModel = ({
     onClose,isOpen
@@ -21,7 +22,7 @@ const CreatePostModel = ({
 
     
 
-    const handelDragOver=()=> {
+    const handelDragOver=(event)=> {
         event.preventDefault();
         event.dataTransfer.dropEffect="copy";
         setIsDragOver(true)
@@ -29,6 +30,17 @@ const CreatePostModel = ({
 
     const handelDragLeave=()=> {
         setIsDragOver(false)
+    }
+    
+    const handelOnChange=(e)=> {
+        const file=e.target.files[0];
+        if (file && (file.type.startsWith("image/") || file.type.startsWith("video/"))){
+            setFile(file);
+        }
+        else{
+            setFile(null);
+            alert("Please select an image or video")
+        }
     }
     
 
@@ -43,9 +55,9 @@ const CreatePostModel = ({
           </div>
           <hr />
           <ModalBody>
-            <div>
-                <div>
-                    <div 
+            <div className='h-[70vh] justify-between pb-5 flex'>
+                <div className='w-[50%]'>
+                 {!file && <div 
                     onDrop={handelDrop} 
                     onDragOver={handelDragOver} 
                     onDragLeave={handelDragLeave}
@@ -53,11 +65,24 @@ const CreatePostModel = ({
                     >
                         <div>
                             <FaPhotoVideo className='text-3xl'></FaPhotoVideo>
-                            <p>Drag Photos or videos here</p>
+                            <p className=''>Drag Photos or videos here</p>
                         </div>
                         <label htmlFor="file-upload" className='custom-file-upload'>Select From Computer</label>
-                        <input type="text" id="file-upload" accept="image/* , video/*" onChange={handelOnChange} />
+
+                        <input className='fileInput' type="file" id="file-upload" accept="image/* , video/*" onChange={handelOnChange} />
                     </div>
+                 }   
+                 {file && <img class="max-h-full" src={URL.createObjectURL(file)} alt="" /> }
+
+                
+                </div>
+                <div className='w-[1px] border  h-full'></div>
+                <div className='w-[50%]'>
+                    <div className='flex item-center px-2'>
+                        <img className='w-7 h-7 rounded-full' src="https://cdn.pixabay.com/photo/2023/06/29/12/28/cats-8096304_1280.jpg" alt="" />
+                        <p className='font-semibold ml-4'>username</p>
+                    </div>
+                    
                 </div>
             </div>
           </ModalBody>
