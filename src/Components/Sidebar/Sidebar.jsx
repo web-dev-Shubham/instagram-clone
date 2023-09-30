@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import CreatePostModel from '../Post/CreatePostModel';
 import { useDisclosure } from '@chakra-ui/react';
 
-
 const Sidebar = () => {
     const [activeTab,setActiveTab]=useState();
     const navigate=useNavigate();
 
-    const {isOpen,onOpen,onClose}= useDisclosure();
+    const [isOpen, onOpen,onClose]= useDisclosure();
 
     const handelTabClick=(title)=> {
         setActiveTab(title)
@@ -21,7 +20,7 @@ const Sidebar = () => {
             navigate("/")
         }
         else if(title==="Create") {
-            onOpen();
+            onOpen()
         }
     }
 
@@ -49,8 +48,7 @@ const Sidebar = () => {
         <p className='ml-5'>More</p>
         </div>
         </div>
-        <CreatePostModel onClose={onClose} isOpen={isOpen}></CreatePostModel>
-         
+        <CreatePostModel onClose={onClose} isOpen={isOpen}></CreatePostModel> 
     </div>
   )
 }

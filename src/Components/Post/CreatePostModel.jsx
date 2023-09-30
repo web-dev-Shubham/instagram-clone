@@ -118,4 +118,4 @@ const CreatePostModel = ({
   )
 }
 
-export default CreatePostModel;
+export default CreatePostModel
